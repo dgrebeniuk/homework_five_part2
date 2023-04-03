@@ -15,9 +15,14 @@ public class homeWorkFivePartTwo {
    @Test
    void dragDrop() {
       open("https://the-internet.herokuapp.com/drag_and_drop");
-      actions().moveToElement($("#column-a")).clickAndHold().moveByOffset(250, 0).release().perform();
       actions().clickAndHold($("#column-a")).moveToElement($("#column-b")).perform();
       $("#column-b").shouldHave(text("A"));
-      sleep(5000);
+   }
+
+   @Test
+   void dragDropTo() {
+      open("https://the-internet.herokuapp.com/drag_and_drop");
+      $("#column-a").dragAndDropTo($("#column-b"));
+      $("#column-b").shouldHave(text("A"));
    }
 }
